@@ -14,6 +14,10 @@ version_id_for_codename_zesty=17.04
 .PHONY: all
 all: $(i386_img_list) $(amd64_img_list)
 
+.PHONY: clean
+clean:
+	rm -f $(i386_img_list) $(amd64_img_list)
+
 # call with version_codename (e.g. trusty)
 define release_rule
 adt-$(1)-amd64-cloud.img:
