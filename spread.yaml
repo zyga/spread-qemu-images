@@ -3,11 +3,12 @@ path: /remote/path
 environment:
     LANG: "$(echo ${LANG:-C.UTF-8})"
     LANGUAGE: "$(echo ${LANGUAGE:-en})"
-    APT_PROXY: "$(HOST: echo $APT_PROXY)"
 backends:
     lxd:
         systems:
             - ubuntu-16.04
+        environment:
+            APT_PROXY: "$(HOST: echo $APT_PROXY)"
 exclude:
     - .git
     - "*.img"
@@ -19,7 +20,7 @@ prepare: |
             apt-get install -y make qemu-system-x86 genisoimage
             apt-get install -y -t ${VERSION_CODENAME}-backports autopkgtest
             # treat APT_PROXY as a location of apt-cacher-ng to use
-            if [ "$SPREAD_BACKEND" = lxd ] && [ -n "${APT_PROXY:-}" ]; then
+            if [ -n "${APT_PROXY:-}" ]; then
                 printf 'Acquire::http::Proxy "%s";\n' "$APT_PROXY" > /etc/apt/apt.conf.d/99proxy
             fi
             ;;
