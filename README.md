@@ -6,7 +6,8 @@ You can find more about spread at https://github.com/snapcore/spread
 ## Usage
 
 To use this repository just clone it into `~/.spread/qemu` and run `make`. You
-will need to have `make` and `autopkgtest` packages installed.
+will need to have `make`, `autopkgtest`, `qemu-system-x86` and `genisoimage`
+packages installed.
 
 ```shell
 mkdir -p ~/.spread/
