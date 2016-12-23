@@ -7,4 +7,4 @@ environment:
 warn-timeout: 15m
 kill-timeout: 45m
 execute: |
-    make -C $SPREAD_PATH adt-$RELEASE-i386-cloud.img adt-$RELEASE-amd-cloud.img
+    make -C $SPREAD_PATH version_codename_list=$RELEASE
