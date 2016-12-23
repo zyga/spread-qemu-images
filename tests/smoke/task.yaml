@@ -1,10 +1,22 @@
 summary: smoke test ensuring that we can build all the images
 environment:
-    RELEASE/trusty: trusty
-    RELEASE/xenial: xenial
-    RELEASE/yakkety: yakkety
-    RELEASE/zesty: zesty
+    ARCH/14_04_32: i386
+    ARCH/16_04_32: i386
+    ARCH/16_10_32: i386
+    ARCH/17_04_32: i386
+    RELEASE/14_04_32: trusty
+    RELEASE/16_04_32: xenial
+    RELEASE/16_10_32: yakkety
+    RELEASE/17_04_32: zesty
+    ARCH/14_04_64: amd64
+    ARCH/16_04_64: amd64
+    ARCH/16_10_64: amd64
+    ARCH/17_04_64: amd64
+    RELEASE/14_04_64: trusty
+    RELEASE/16_04_64: xenial
+    RELEASE/16_10_64: yakkety
+    RELEASE/17_04_64: zesty
 warn-timeout: 15m
 kill-timeout: 45m
 execute: |
-    make -C $SPREAD_PATH version_codename_list=$RELEASE
+    make -C $SPREAD_PATH version_codename_list=$RELEASE arch_list=$ARCH
