@@ -1,0 +1,10 @@
+summary: smoke test ensuring that we can build all the images
+environment:
+    RELEASE/trusty: trusty
+    RELEASE/xenial: xenial
+    RELEASE/yakkety: yakkety
+    RELEASE/zesty: zesty
+warn-timeout: 15m
+kill-timeout: 45m
+execute: |
+    make -C $SPREAD_PATH adt-$RELEASE-i386-cloud.img adt-$RELEASE-amd-cloud.img

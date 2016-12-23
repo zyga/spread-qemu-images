@@ -1,0 +1,33 @@
+project: spread-qemu-images
+path: /remote/path
+environment:
+    LANG: "$(echo ${LANG:-C.UTF-8})"
+    LANGUAGE: "$(echo ${LANGUAGE:-en})"
+    APT_PROXY: "$(HOST: echo $APT_PROXY)"
+backends:
+    lxd:
+        systems:
+            - ubuntu-16.04
+exclude:
+    - .git
+    - "*.img"
+prepare: |
+    . /etc/os-release
+    case ${ID} in
+        ubuntu)
+            apt-get update
+            apt-get install -y make qemu-system-x86 genisoimage
+            apt-get install -y -t ${VERSION_CODENAME}-backports autopkgtest
+            # treat APT_PROXY as a location of apt-cacher-ng to use
+            if [ "$SPREAD_BACKEND" = lxd ] && [ -n "${APT_PROXY:-}" ]; then
+                printf 'Acquire::http::Proxy "%s";\n' "$APT_PROXY" > /etc/apt/apt.conf.d/99proxy
+            fi
+            ;;
+    esac
+prepare-each: |
+    make -C $SPREAD_PATH clean
+restore-each: |
+    make -C $SPREAD_PATH clean
+suites:
+    tests/:
+        summary: Spread tests for spread-qemu-images
