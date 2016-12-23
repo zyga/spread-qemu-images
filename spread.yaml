@@ -6,7 +6,8 @@ environment:
 backends:
     lxd:
         systems:
-            - ubuntu-16.04
+            - ubuntu-16.04:
+                workers: 4
         environment:
             APT_PROXY: "$(HOST: echo $APT_PROXY)"
     linode:
