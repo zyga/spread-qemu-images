@@ -16,13 +16,13 @@ prepare: |
     . /etc/os-release
     case ${ID} in
         ubuntu)
-            apt-get update
-            apt-get install -y make qemu-system-x86 genisoimage
-            apt-get install -y -t ${VERSION_CODENAME}-backports autopkgtest
             # treat APT_PROXY as a location of apt-cacher-ng to use
             if [ -n "${APT_PROXY:-}" ]; then
                 printf 'Acquire::http::Proxy "%s";\n' "$APT_PROXY" > /etc/apt/apt.conf.d/99proxy
             fi
+            apt-get update
+            apt-get install -y make qemu-system-x86 genisoimage
+            apt-get install -y -t ${UBUNTU_CODENAME}-backports autopkgtest
             ;;
     esac
 prepare-each: |
