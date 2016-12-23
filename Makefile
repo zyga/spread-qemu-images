@@ -1,5 +1,8 @@
 # List of Ubuntu releases to get
 version_codename_list=trusty xenial yakkety zesty
+# List of Ubuntu architectures to get
+arch_list=i386 amd64
+
 version_id_list=$(foreach version_codename,$(version_codename_list),$(value version_id_for_codename_$(version_codename)))
 
 i386_img_list=$(foreach version_id,$(version_id_list),ubuntu-$(version_id)-32.img)
@@ -11,12 +14,13 @@ version_id_for_codename_xenial=16.04
 version_id_for_codename_yakkety=16.10
 version_id_for_codename_zesty=17.04
 
+target_list=$(foreach arch,$(arch_list),$($(arch)_img_list))
 .PHONY: all
-all: $(i386_img_list) $(amd64_img_list)
+all: $(target_list)
 
 .PHONY: clean
 clean:
-	rm -f $(i386_img_list) $(amd64_img_list)
+	rm -f $(target_list)
 
 # call with version_codename (e.g. trusty)
 define release_rule
