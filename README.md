@@ -1,6 +1,7 @@
 # Spread QEMU images for Ubuntu
 
 This repository contains useful rules to construct QEMU images for Spread.
+You can find more about spread at https://github.com/snapcore/spread
 
 ## Usage
 
