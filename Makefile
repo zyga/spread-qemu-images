@@ -20,7 +20,7 @@ all: $(target_list)
 
 .PHONY: clean
 clean:
-	rm -f $(target_list)
+	rm -f $(target_list) adt-*.img
 
 # call with version_codename (e.g. trusty)
 define release_rule
