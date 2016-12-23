@@ -17,6 +17,6 @@ environment:
     RELEASE/16_10_64: yakkety
     RELEASE/17_04_64: zesty
 warn-timeout: 15m
-kill-timeout: 45m
+kill-timeout: 2h
 execute: |
     make -C $SPREAD_PATH version_codename_list=$RELEASE arch_list=$ARCH
