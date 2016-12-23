@@ -11,4 +11,4 @@ before_install:
     - sudo apt-get update
     - sudo apt-get install -y make qemu-system-x86 genisoimage
     - sudo apt-get install -y -t trusty-backports autopkgtest
-script: make version_codename_list=$RELEASE
+script: travis_wait 45 make version_codename_list=$RELEASE
