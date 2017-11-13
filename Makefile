@@ -1,7 +1,7 @@
 # List of Ubuntu releases to get
 version_codename_list=trusty xenial yakkety zesty
 # List of Ubuntu architectures to get
-arch_list=i386 amd64
+arch_list=amd64
 
 version_id_list=$(foreach version_codename,$(version_codename_list),$(value version_id_for_codename_$(version_codename)))
 
