@@ -1,5 +1,5 @@
 # List of Ubuntu releases to get
-version_codename_list=trusty xenial yakkety zesty
+version_codename_list=trusty xenial zesty artful
 # List of Ubuntu architectures to get
 arch_list=amd64
 
@@ -11,8 +11,8 @@ amd64_img_list=$(foreach version_id,$(version_id_list),ubuntu-$(version_id)-64.i
 # version_codename to version_id mapping
 version_id_for_codename_trusty=14.04
 version_id_for_codename_xenial=16.04
-version_id_for_codename_yakkety=16.10
 version_id_for_codename_zesty=17.04
+version_id_for_codename_artful=17.10
 
 target_list=$(foreach arch,$(arch_list),$($(arch)_img_list))
 .PHONY: all
