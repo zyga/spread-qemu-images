@@ -1,5 +1,5 @@
 # List of Ubuntu releases to get
-version_codename_list=trusty xenial bionic
+version_codename_list=trusty xenial bionic eoan
 # List of Ubuntu architectures to get
 arch_list=amd64
 
@@ -14,6 +14,9 @@ version_id_for_codename_xenial=16.04
 version_id_for_codename_zesty=17.04
 version_id_for_codename_artful=17.10
 version_id_for_codename_bionic=18.04
+version_id_for_codename_cosmic=18.10
+version_id_for_codename_disco=19.04
+version_id_for_codename_eoan=19.10
 
 target_list=$(foreach arch,$(arch_list),$($(arch)_img_list))
 .PHONY: all
