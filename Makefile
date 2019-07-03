@@ -28,13 +28,13 @@ clean:
 
 # call with version_codename (e.g. trusty)
 define release_rule
-adt-$(1)-amd64-cloud.img:
+autopkgtest-$(1)-amd64-cloud.img:
 	autopkgtest-buildvm-ubuntu-cloud --verbose $(if $(APT_PROXY), -p $(APT_PROXY)) -r $(1) -a amd64
-adt-$(1)-i386-cloud.img:
+autopkgtest-$(1)-i386-cloud.img:
 	autopkgtest-buildvm-ubuntu-cloud --verbose $(if $(APT_PROXY), -p $(APT_PROXY)) -r $(1) -a i386
-ubuntu-$$(version_id_for_codename_$(1))-64.img: adt-$(1)-amd64-cloud.img
+ubuntu-$$(version_id_for_codename_$(1))-64.img: autopkgtest-$(1)-amd64-cloud.img
 	ln -s $$^ $$@
-ubuntu-$$(version_id_for_codename_$(1))-32.img: adt-$(1)-i386-cloud.img
+ubuntu-$$(version_id_for_codename_$(1))-32.img: autopkgtest-$(1)-i386-cloud.img
 	ln -s $$^ $$@
 endef
 
