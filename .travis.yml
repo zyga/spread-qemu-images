@@ -1,5 +1,5 @@
 sudo: required
-dist: trusty
+dist: xenial
 language: python
 env:
   matrix:
@@ -7,10 +7,7 @@ env:
     - RELEASE=trusty ARCH=amd64
     - RELEASE=xenial ARCH=i386
     - RELEASE=xenial ARCH=amd64
-    - RELEASE=yakkety ARCH=i386
-    - RELEASE=yakkety ARCH=amd64
-    - RELEASE=zesty ARCH=i386
-    - RELEASE=zesty ARCH=amd64
+    - RELEASE=bionic ARCH=amd64
 before_install:
     - sudo apt-get update
     - sudo apt-get install -y make qemu-system-x86 genisoimage
