@@ -1,5 +1,5 @@
 # List of Ubuntu releases to get
-version_codename_list=trusty xenial zesty artful
+version_codename_list=trusty xenial bionic
 # List of Ubuntu architectures to get
 arch_list=amd64
 
